@@ -1,0 +1,23 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	- promote
+{% endblock %}
+
+{% block content %}
+
+{% for message in app.flashes('erreur') %}
+	<div class="alert alert-danger" role="alert">{{ message }}</div>
+{% endfor %}
+
+{% if utilisateur is not empty %}
+<h2>Promouvoir {{ utilisateur.nom }} {{ utilisateur.prenom }} au rôle ADMIN</h2>
+
+
+<br>
+<h2>Veuillez entre le code secret pour confirmer</h2>
+
+{{ form(form) }}
+{% endif %}	
+{% endblock %}

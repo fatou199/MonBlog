@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+
+    <h2>Creer un auteur</h2>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.nom) }}
+
+    {{ form_row(form.prenom) }}
+
+
+    {{ form_row(form.email) }}
+
+
+    {{ form_end(form) }}
+
+{% endblock %}  

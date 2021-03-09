@@ -1,0 +1,37 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	- Nos articles
+{% endblock %}
+
+{% block content %}
+
+	<h2>Tous les articles</h2>
+	<a href="{{ path('monblog_article_create') }}"><i class="fas fa-plus"> Créer un nouveau article</a></i>
+	<table class="table table-warning table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<td>Titre</td>
+				<td>Contenu</td>
+				<td>Publié le</td>
+				<td>Auteur</td>
+				<td>Action</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for article in allArticles %}
+				<tr>
+					<td>{{ article.titre }}</td>
+					<td>{{ article.contenu|slice(0, 100) }} <a href="{{ path('monblog_article_show', {id : article.id }) }}">lire la suite...</a></td>
+					<td>{{ article.dateCreation|date("d/m/Y à H:i:s ") }}</td>
+					<td><a href="{{ path('monblog_auteur_detail', {id : article.id }) }}">{{ article.auteur.fullName }}</a></td>
+					<td><a href="{{ path('monblog_article_update', {id : article.id }) }}">Modifier</a></td>
+					<td>
+					<a href="{{ path('monblog_article_delete', {id : article.id }) }}" onclick="return confirm('Etes-vous sûr de vouloir supprimer l\'article')" >Supprimer</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+    <h2>Modifier un article</h2>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.titre) }}
+
+    {{ form_label(form.contenu) }}
+    {{ form_widget(form.contenu, { "attr": {"rows": 5 }}) }}
+
+    {{ form_row(form.auteur) }}
+
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	- {{ article.titre |slice(0, 10)}}
+{% endblock %}
+
+{% block content %}
+    <a href="{{ path('monblog_article_create') }}"><i class="fas fa-edit"> Editer l'article</a></i>
+	<div class="show-article">
+    <h2>{{ article.titre }}</h2>
+    <h3 class="auteur-subtitle"> par <a href="{{ path('monblog_auteur_detail', {id: article.auteur.id}) }}">{{ article.auteur.nom }}</a></h3>
+    <h4>Publié le {{ article.dateCreation|date("d/m/Y à H:i:s ") }}</h4>
+    <p class="article">{{ article.contenu }}</p>
+    </div>
+
+
+{% endblock %}

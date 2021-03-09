@@ -1,0 +1,40 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	-
+{% endblock %}
+
+{% block content %}
+
+	
+
+	<h3>Tous les auteurs</h3>
+	<a href="{{ path('monblog_auteur_createAuteur') }}"><i class="fas fa-plus"> Créer un nouveau auteur</a></i>
+	<table class="table table-warning table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<td>Nom</td>
+				<td>Prenom</td>
+				<td>Date de naissance</td>
+				<td>Email</td>
+				<td>Action</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for auteur in allAuteur %}
+				<tr>
+					<td><a href=""></a>{{ auteur.nom }}</td> 
+					<td>{{ auteur.prenom }}</td>
+					<td>{{ auteur.dateDeNaissance|date("d/m/Y") }}</td> 
+					<td>{{ auteur.email }}</td>
+					<td><a href="{{ path('monblog_auteur_updateAuteur', {id : auteur.id }) }}">Modifier</a></td>
+					<td>
+					<a href="{{ path('monblog_auteur_deleteAuteur', {id : auteur.id }) }}" onclick="return confirm('Etes-vous sûr de vouloir supprimer l\'auteur')" >Supprimer</a>
+					</td> 
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+{% endblock %}

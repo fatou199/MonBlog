@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+
+{% if app.request.get('_route') == 'monblog_article_create' %}
+
+    <h2>Creer un article</h2>
+    {% else %}
+    <h2>Modifier un article</h2>
+    {% endif %}
+
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.titre) }}
+
+    {{ form_label(form.contenu) }}
+    {{ form_widget(form.contenu, { "attr": {"rows": 5 }}) }}
+
+    {{ form_row(form.auteur) }}
+
+    {{ form_end(form) }}
+
+{% endblock %}

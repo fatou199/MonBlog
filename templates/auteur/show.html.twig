@@ -1,0 +1,35 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	-
+{% endblock %}
+
+{% block content %}
+
+	<h2>{{auteur.nom}} - {{ auteur.prenom }}</h2>
+	{% if auteur.articles is empty %}
+		{{ auteur.nom }} n'a pas articles
+
+	{% else %}
+	<h3>Tous ses articles</h3>
+	<table class="table table-warning table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<td>Titre</td>
+				<td>Contenu</td>
+				<td>Publié le</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for article in auteur.articles %}
+				<tr>
+					<td><a href="{{ path('monblog_auteur_show', {id : auteur.id }) }}">{{ article.titre }}</td> 
+					<td>{{ article.contenu|slice(0, 100) }}</td>
+					<td>{{ article.dateCreation|date("d/m/Y à H:i:s ") }}</td> 
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% endif %}
+{% endblock %}

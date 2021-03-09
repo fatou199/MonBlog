@@ -1,3 +1,134 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+# equivalant au route dans le controlleur
+monblog_home: # le nom de la route
+   path: / # le chemin de la route
+   controller: App\Controller\HomeController::main
+   # dans le controller sur le public function index
+
+# ----------------------------------------------------------------
+# ------------------------- PAGES STATIQUES ----------------------
+
+monblog_cgv:
+   path: /cgv 
+   controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+   defaults:
+      template: 'statique/cgv.html.twig' 
+
+monblog_contact:
+   path: /contact 
+   controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+   defaults:
+      template: 'statique/contact.html.twig' 
+
+monblog_values:
+   path: /nos-valeurs 
+   controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+   defaults:
+      template: 'statique/values.html.twig' 
+
+monblog_becomebloggeur:
+   path: /devenir-blogeur
+   controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+   defaults:
+      template: 'statique/devenirBloggueur.html.twig' 
+
+monblog_jointeam:
+   path: /jointeam 
+   controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+   defaults:
+      template: 'statique/jointeam.html.twig' 
+
+monblog_quisommesnous:
+   path: /qui-sommes-nous
+   controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+   defaults:
+      template: 'statique/quiSommesNous.html.twig' 
+
+# ----------------------------------------------------------------
+# ------------------------- PAGES ARTICLES ----------------------
+
+monblog_article_showAll: # le nom de la route
+   path: /article # le chemin de la route
+   controller: App\Controller\ArticleController::showAll
+   # dans le controller sur le public function index
+
+monblog_article_show: 
+   path: /article/{id} 
+   controller: App\Controller\ArticleController::show
+   # dans le controller sur le public function index
+   requirements: 
+      id: \d+ # qui indique que le paramètre doit être un entier, de 1 ou plusieurs chiffres.
+
+monblog_article_create: # le nom de la route
+   path: /article/create # le chemin de la route
+   controller: App\Controller\ArticleController::create
+
+monblog_article_update: # le nom de la route
+   path: /article/update/{id} # le chemin de la route
+   controller: App\Controller\ArticleController::update
+   requirements: 
+      id: \d+ # qui indique que le paramètre doit être un entier, de 1 ou plusieurs chiffres.
+
+monblog_article_delete: # le nom de la route
+   path: /article/delete/{id} # le chemin de la route
+   controller: App\Controller\ArticleController::delete
+   requirements: 
+      id: \d+ # qui indique que le paramètre doit être un entier, de 1 ou plusieurs chiffres.
+
+
+# ----------------------------------------------------------------
+# ------------------------- PAGES AUTEUR ----------------------
+
+
+monblog_auteur_show: 
+   path: /auteur/{id} 
+   controller: App\Controller\AuteurController::show
+   # dans le controller sur le public function index
+   requirements: 
+      id: \d+ # qui indique que le paramètre doit être un entier, de 1 ou plusieurs chiffres.
+
+monblog_auteur_showAll: # le nom de la route
+   path: /auteur # le chemin de la route
+   controller: App\Controller\AuteurController::showAll
+
+monblog_auteur_detail: # le nom de la route
+   path: /auteur/detail/{id} # le chemin de la route
+   controller: App\Controller\AuteurController::detail
+   requirements: 
+      id: \d+ # qui indique que le paramètre doit être un entier, de 1 ou plusieurs chiffres.
+
+monblog_auteur_createAuteur: # le nom de la route
+   path: /auteur/createAuteur # le chemin de la route
+   controller: App\Controller\AuteurController::createAuteur
+
+monblog_auteur_updateAuteur: # le nom de la route
+   path: /auteur/updateAuteur/{id} # le chemin de la route
+   controller: App\Controller\AuteurController::updateAuteur
+   requirements: 
+      id: \d+ # qui indique que le paramètre doit être un entier, de 1 ou plusieurs chiffres.
+
+monblog_auteur_deleteAuteur: # le nom de la route
+   path: /auteur/deleteAuteur/{id} # le chemin de la route
+   controller: App\Controller\AuteurController::deleteAuteur
+   requirements: 
+      id: \d+ # qui indique que le paramètre doit être un entier, de 1 ou plusieurs chiffres.
+
+# ----------------------------------------------------------------
+# ------------------------- PAGES USER ----------------------
+
+app_login:
+   path: /login
+   controller: App\Controller\SecurityController::login
+
+app_register:
+   path: /register
+   controller: App\Controller\RegistrationController::register
+
+app_logout:
+   path: /logout
+
+app_makeadmin:
+   path: /promote/{id}
+   controller: App\Controller\SecurityController::promotToAdmin
+   requirements: 
+      id: \d+ 
+

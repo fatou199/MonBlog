@@ -1,0 +1,46 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	- Accueil
+{% endblock %}
+
+{% block content %}
+	{# 
+	declaration de variable en twig 
+	{% set prenom = 'patricia' %}
+	
+	affichage de la variable
+	{{ prenom }}
+	#}
+	<div class="centred">
+		<h3>
+			<a href="{{ path('monblog_article_showAll') }}">Tous nos articles</a>
+			{# <a href="{{ path('articles') }}">Tous nos articles</a> #}
+		</h3>
+
+		<h3>
+			<a href="{{ path('monblog_auteur_showAll') }}">Nos blogeurs</a>
+		</h3>
+	</div>
+
+	<div class="row">
+	<div class="col text-center">
+		<h3>Dernier article du blog :</h3>
+
+		{% if dernierArticle is null %}
+			<p>Aucun Article à afficher</p>
+		{% else %}
+			<p class="auteurArticle">
+				<a href="{{ path('monblog_auteur_detail', {id : dernierArticle.auteur.id }) }}">{{ dernierArticle.auteur.nom}} {{ dernierArticle.auteur.prenom}} </a>
+
+			</p>
+			<p class="dateArticle">{{ dernierArticle.dateCreation|date("d/m/Y à H:i:s ")  }}</p>
+			<h4>
+				<a href="{{ path('monblog_auteur_show', {id : dernierArticle.auteur.id }) }}">{{ dernierArticle.titre }}</a>
+			</h4>
+			<p class="articleSumary">{{ dernierArticle.contenu|slice(0,110)}}</p>
+		{% endif %}
+	</div>
+	</div>
+{% endblock %}
